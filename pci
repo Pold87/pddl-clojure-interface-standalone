@@ -9,6 +9,30 @@ jarfile=pddl-clojure-interface-standalone-1.0.0-standalone.jar
 
 exe="$path/$jarfile"
 
+##############
+# Print Help #
+##############
+
+# If there is no argument:
+if [ -z "$1" ]
+then
+
+printf "USAGE:
+
+Create: Add types to a list of entities and print the list
+pci create <file-with-names-of-entities> <type>
+
+Get: Get a PDDL block in a PDDL file and print the block
+pci get <file> <block>
+
+Add a construct to a PDDL block and print the new domain/problem
+pci add <file> <block> <construct>"
+
+
+exit 1
+fi
+
+
 if [ "$1" = "add" ]; then
     # If "add" is invoked, the arguments have to be collected first
     sexpr="${*:4}"  # $4, $5, $6, etc. contain the s-expression that
