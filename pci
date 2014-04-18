@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Shell wrapper for the PDDL/Clojure Interface (standalone)
+# Written by Volker Strobel, 2014
+
+# Path to the jar file for the interface
+path="."
+jarfile=pddl-clojure-interface-standalone-1.0.0-standalone.jar
+
+exe="$path/$jarfile"
+
+if [ "$1" = "add" ]; then
+    # If "add" is invoked, the arguments have to be collected first
+    sexpr="${*:4}"  # $4, $5, $6, etc. contain the s-expression that
+    # should be collected
+    java -jar $exe $1 $2 $3 $sexpr
+else
+   # Simply run the interface
+   java -jar $exe $1 $2 $3 $4
+fi
+            
+
+
