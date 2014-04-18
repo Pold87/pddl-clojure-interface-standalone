@@ -37,7 +37,8 @@ if [ "$1" = "add" ]; then
     # If "add" is invoked, the arguments have to be collected first
     sexpr="${*:4}"  # $4, $5, $6, etc. contain the s-expression that
     # should be collected
-    java -jar $exe $1 $2 $3 $sexpr
+    echo "$sexpr"
+    java -jar $exe "$1" "$2" "$3" "$sexpr"
 else
    # Simply run the interface
    java -jar $exe $1 $2 $3 $4
